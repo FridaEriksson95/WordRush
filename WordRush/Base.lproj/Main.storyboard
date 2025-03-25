@@ -21,6 +21,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="b55-6A-aIe" kind="presentation" modalPresentationStyle="fullScreen" id="TWx-nm-nEk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -31,8 +34,109 @@
             </objects>
             <point key="canvasLocation" x="114" y="-27"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="2zF-mh-T7D">
+            <objects>
+                <viewController storyboardIdentifier="GameViewController" id="b55-6A-aIe" customClass="GameViewController" customModule="WordRush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hMd-KY-P1y">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bkg_img" translatesAutoresizingMaskIntoConstraints="NO" id="QXl-iH-fh4">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="852" id="e7c-Vd-EOk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antal Rätt: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9E-qv-Ady">
+                                <rect key="frame" x="128" y="687" width="167" height="21"/>
+                                <color key="backgroundColor" red="0.5647059083" green="0.31764706970000001" blue="0.71372550729999995" alpha="0.5172806291390728" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.61176472900000001" green="0.34509804840000002" blue="0.77254903320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="rVi-eY-Ian"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Din gissning" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-6T-F27">
+                                <rect key="frame" x="51" y="444" width="290" height="34"/>
+                                <color key="backgroundColor" red="0.78431367870000002" green="0.59607845540000004" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="PI1-dS-bg1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8x-BG-puy">
+                                <rect key="frame" x="153" y="525" width="87" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="NOp-nI-CCf"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="ENTER">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.38823530080000002" green="0.1686274707" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time's Up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-Bu-7D5">
+                                <rect key="frame" x="202" y="134" width="82" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Z55-cY-kGM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORD" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
+                                <rect key="frame" x="51" y="309" width="290" height="61"/>
+                                <color key="backgroundColor" red="0.78431367870000002" green="0.59607845540000004" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="ypr-Pq-Cvr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rT1-LA-wgI"/>
+                        <color key="backgroundColor" red="0.37254902719999999" green="0.23921570180000001" blue="0.4352940917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QXl-iH-fh4" firstAttribute="trailing" secondItem="rT1-LA-wgI" secondAttribute="trailing" id="07s-ZQ-zbH"/>
+                            <constraint firstItem="yje-M2-OHd" firstAttribute="leading" secondItem="rT1-LA-wgI" secondAttribute="leading" constant="51" id="4Jp-9A-CPe"/>
+                            <constraint firstItem="l8x-BG-puy" firstAttribute="top" secondItem="Kdf-6T-F27" secondAttribute="bottom" constant="47" id="ABY-cg-n6Z"/>
+                            <constraint firstItem="rT1-LA-wgI" firstAttribute="trailing" secondItem="mp4-Bu-7D5" secondAttribute="trailing" constant="109" id="E4s-dM-2MA"/>
+                            <constraint firstItem="r9E-qv-Ady" firstAttribute="leading" secondItem="rT1-LA-wgI" secondAttribute="leading" constant="128" id="G0U-zH-OcB"/>
+                            <constraint firstItem="rT1-LA-wgI" firstAttribute="trailing" secondItem="l8x-BG-puy" secondAttribute="trailing" constant="153" id="Kbg-bB-vuQ"/>
+                            <constraint firstItem="Kdf-6T-F27" firstAttribute="leading" secondItem="rT1-LA-wgI" secondAttribute="leading" constant="51" id="Lx8-GE-0jl"/>
+                            <constraint firstItem="QXl-iH-fh4" firstAttribute="top" secondItem="rT1-LA-wgI" secondAttribute="top" id="OpG-YQ-07W"/>
+                            <constraint firstItem="rT1-LA-wgI" firstAttribute="bottom" secondItem="r9E-qv-Ady" secondAttribute="bottom" constant="144" id="PRS-a0-61U"/>
+                            <constraint firstItem="mp4-Bu-7D5" firstAttribute="leading" secondItem="rT1-LA-wgI" secondAttribute="leading" constant="202" id="Pck-pq-8JC"/>
+                            <constraint firstAttribute="bottom" secondItem="QXl-iH-fh4" secondAttribute="bottom" id="Qds-0v-XHS"/>
+                            <constraint firstItem="QXl-iH-fh4" firstAttribute="leading" secondItem="rT1-LA-wgI" secondAttribute="leading" id="YIU-KL-f26"/>
+                            <constraint firstItem="l8x-BG-puy" firstAttribute="leading" secondItem="rT1-LA-wgI" secondAttribute="leading" constant="153" id="YxV-KZ-NmM"/>
+                            <constraint firstItem="mp4-Bu-7D5" firstAttribute="top" secondItem="rT1-LA-wgI" secondAttribute="top" constant="134" id="ckI-Gc-fss"/>
+                            <constraint firstItem="Kdf-6T-F27" firstAttribute="top" secondItem="yje-M2-OHd" secondAttribute="bottom" constant="74" id="fMZ-Vj-dlZ"/>
+                            <constraint firstItem="rT1-LA-wgI" firstAttribute="trailing" secondItem="yje-M2-OHd" secondAttribute="trailing" constant="52" id="hnV-q4-1yY"/>
+                            <constraint firstItem="rT1-LA-wgI" firstAttribute="trailing" secondItem="r9E-qv-Ady" secondAttribute="trailing" constant="98" id="sox-72-2zN"/>
+                            <constraint firstItem="rT1-LA-wgI" firstAttribute="trailing" secondItem="Kdf-6T-F27" secondAttribute="trailing" constant="52" id="stY-Be-QR0"/>
+                            <constraint firstItem="r9E-qv-Ady" firstAttribute="top" secondItem="l8x-BG-puy" secondAttribute="bottom" constant="127" id="wHP-dR-Hh2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="51l-yT-hgt"/>
+                    <connections>
+                        <outlet property="TimesUpLabel" destination="mp4-Bu-7D5" id="bge-Vm-7A0"/>
+                        <outlet property="WordLabel" destination="yje-M2-OHd" id="t8m-oo-XmR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IWf-7c-E66" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.83206106870227" y="-27.464788732394368"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Bkg_img" width="1080" height="1920"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
