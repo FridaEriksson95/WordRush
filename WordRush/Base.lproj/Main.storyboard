@@ -78,9 +78,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
 
+
             <point key="canvasLocation" x="114" y="-27"/>
 
             <point key="canvasLocation" x="113.74045801526717" y="-27.464788732394368"/>
+
 
         </scene>
         <!--Highscore View Controller-->
