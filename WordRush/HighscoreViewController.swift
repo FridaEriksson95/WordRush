@@ -10,7 +10,10 @@ import UIKit
 class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var highscores: [HighScoreEntry] = []
     var getCurrentScore: Int = 0
+    
 
+    @IBOutlet weak var RankLabel: UILabel!
+    @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -18,6 +21,8 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         
         //hämta highscores från HighscoreManager
         highscores = HighScoreManager.shared.getAllHighscores()
+        
+        tableView.register(HighscoreCell.self, forCellReuseIdentifier: "highscoreCell")
         
         // Sätt delegate och dataSource
         tableView.dataSource = self
@@ -39,16 +44,15 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath) as! HighscoreCell
         
         let highscore = highscores[indexPath.row]
         
-        
-        cell.textLabel?.text = "\(highscore.rank). \(highscore.score) poäng"
+        cell.rankLabel.text = "\(highscore.rank)."
+        cell.scoreLabel.text = "\(highscore.score) poäng"
         
         return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.

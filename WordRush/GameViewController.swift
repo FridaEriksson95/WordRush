@@ -16,6 +16,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     var currentAnimal: (swedish: String, english: String)?
     var score = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -175,7 +176,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                 remainingTime = 8
                 startGame()
             } else {
-                score = max(0, score - 5)
+                score -= 5
                 scoreLabel?.text = "Points: \(score)"
                 showWrongAnswerAnimation()
                 answerTextField?.text = ""
