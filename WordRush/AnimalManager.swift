@@ -8,6 +8,7 @@
 import Foundation
 
 class AnimalManager {
+    static let shared = AnimalManager()
     private let animals: [(swedish: String, english: String)] = [
         ("Lejon 🦁", "Lion"),
         ("Tiger 🐅", "Tiger"),
@@ -41,4 +42,52 @@ class AnimalManager {
         ("Flodhäst 🦛", "Hippopotamus"),
         ("Bältdjur", "Armadillo")
     ]
-}
+    
+    private var usedAnimals: [String] = []
+      private var currentIndex = 0
+      private var usedIndices = Set<Int>()
+      private var score = 0
+      
+      func getRandomAnimal() -> (swedish: String, english: String)? {
+          guard animals.count > 0 else { return nil }
+          
+          // Om alla djur har använts, börja om
+          if usedIndices.count >= animals.count {
+              usedIndices.removeAll()
+          }
+          
+          // Hitta ett slumpat index som inte använts
+          var randomIndex: Int
+          repeat {
+              randomIndex = Int.random(in: 0..<animals.count)
+          } while usedIndices.contains(randomIndex)
+          
+          usedIndices.insert(randomIndex)
+          return animals[randomIndex]
+      }
+      
+      func checkCorrectAnswer(userInput: String, forSwedishWord: String) -> Bool {
+          guard let animal = animals.first(where: { $0.swedish == forSwedishWord }) else {
+              return false
+          }
+          return userInput.lowercased() == animal.english.lowercased()
+      }
+      
+      func increaseScore(by points: Int) {
+          score += points
+      }
+      
+      func resetGame() {
+          currentIndex = 0
+          usedIndices.removeAll()
+          score = 0
+      }
+      
+      func getCurrentScore() -> Int {
+          return score
+      }
+  }
+
+
+
+

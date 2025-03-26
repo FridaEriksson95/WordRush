@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HighScoreEntry {
+struct HighScoreEntry: Codable {
     let score: Int
     let rank: Int
 }

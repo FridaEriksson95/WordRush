@@ -18,16 +18,7 @@ class HighScoreManager {
     //TEST UTSKRIFT
     private func generateTestData() {
         highscores = [
-            HighScoreEntry(score: 250, rank: 1),
-            HighScoreEntry(score: 200, rank: 2),
-            HighScoreEntry(score: 180, rank: 3),
-            HighScoreEntry(score: 150, rank: 4),
-            HighScoreEntry(score: 120, rank: 5),
-            HighScoreEntry(score: 100, rank: 6),
-            HighScoreEntry(score: 90, rank: 7),
-            HighScoreEntry(score: 80, rank: 8),
-            HighScoreEntry(score: 70, rank: 9),
-            HighScoreEntry(score: 60, rank: 10)
+
         ]
     }
     
