@@ -7,15 +7,20 @@
 
 import UIKit
 
-class HighscoreTableViewController: UITableViewController {
+class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var highscores: [HighScoreEntry] = []
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //hämta highscores från HighscoreManager
         highscores = HighScoreManager.shared.getAllHighscores()
         
+        // Sätt delegate och dataSource
+        tableView.dataSource = self
+        tableView.delegate = self
         
         tableView.reloadData()
 
@@ -23,16 +28,16 @@ class HighscoreTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return highscores.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath)
         
         let highscore = highscores[indexPath.row]
