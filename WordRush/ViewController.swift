@@ -8,10 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
 
-    override func viewDidLoad() {
+  @IBOutlet weak var textLabel: UITextView!
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    textLabel.layer.cornerRadius = 16
+    textLabel.layer.masksToBounds = true
+    textLabel.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    textLabel.textContainer.lineFragmentPadding = 0
     }
 
 
