@@ -91,7 +91,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-V8-xYO">
-                                <rect key="frame" x="0.0" y="130" width="393" height="573"/>
+                                <rect key="frame" x="0.0" y="130" width="393" height="442"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -142,7 +142,7 @@
                         <color key="backgroundColor" red="0.5647059083" green="0.3058823645" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="gEE-V8-xYO" secondAttribute="bottom" constant="37" id="7GD-qx-xem"/>
+                            <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="gEE-V8-xYO" secondAttribute="bottom" constant="168" id="7GD-qx-xem"/>
                             <constraint firstItem="XLO-Md-p4W" firstAttribute="trailing" secondItem="JZ3-ko-gH5" secondAttribute="trailing" constant="115" id="Dyk-Ff-Nb5"/>
                             <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="JZ3-ko-gH5" secondAttribute="bottom" constant="618" id="F8N-M3-e8d"/>
                             <constraint firstItem="JZ3-ko-gH5" firstAttribute="leading" secondItem="XLO-Md-p4W" secondAttribute="leading" constant="115" id="N7k-j6-LlO"/>
@@ -278,10 +278,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
