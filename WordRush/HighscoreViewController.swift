@@ -9,6 +9,7 @@ import UIKit
 
 class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var highscores: [HighScoreEntry] = []
+    var getCurrentScore: Int = 0
 
     @IBOutlet weak var tableView: UITableView!
     

@@ -7,7 +7,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
-
     @IBOutlet weak var EnterButton: UIButton!
     
     let animalManager = AnimalManager()
@@ -29,9 +28,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
         showStartAlert()
     }
+    
     func setupUI() {
         guard let wordLabel = wordLabel,
-              let answerTextField = answerTextField,
               let scoreLabel = scoreLabel,
               let timerLabel = timerLabel
         else { return
@@ -95,15 +94,18 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             wordLabel.text = "You succeded with all animals! Congratz!"
             navigateToHighScore()
             return
-    
         }
+        
         setupCountDownCircle()
-        answerTextField.text = ""
         startCountDown()
+        answerTextField.text = ""
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.answerTextField.becomeFirstResponder()
+        }
     }
     
     func startCountDown() {
-
         timerLabel.isHidden = false
         timerLabel.text = "\(remainingTime)"
         
@@ -122,41 +124,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
             if self.remainingTime <= 0 {
                 timer.invalidate()
-                self.gameOver()
+                HighScoreManager.shared.addHighscore(score: self.score)
+                self.navigateToHighScore()
             }
-        }
-    }
-    
-    func gameOver() {
-        countDownTimer?.invalidate()
-        shapeLayer.removeAllAnimations()
-        
-        HighScoreManager.shared.addHighscore(score: score)
-        
-        let alert = UIAlertController(
-            title: "Game Over!",
-            message: "Din poäng: \(score)",
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Spela igen", style: .default) { [weak self] _ in
-            self?.resetGame()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Highscores", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            
-            // Försök att hämta ViewController från Storyboard
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let highscoreVC = storyboard.instantiateViewController(withIdentifier: "HighscoreViewController") as? HighscoreViewController {
-                self.present(highscoreVC, animated: true)
-            } else {
-                print("Kunde inte hitta HighscoreViewController")
-            }
-        })
-        
-        present(alert, animated: true) {
-            alert.view.tintColor = .purple
         }
     }
 
@@ -180,6 +150,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func navigateToHighScore() {
         performSegue(withIdentifier: "toHighScore", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toHighScore",
+           let highScoreVC = segue.destination as? HighscoreViewController {
+            highScoreVC.getCurrentScore = self.score
+        }
+    }
+    
     @objc func checkAnswer() {
             guard let userInput = answerTextField?.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                   !userInput.isEmpty,
@@ -188,7 +166,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             }
             
             if animalManager.checkCorrectAnswer(userInput: userInput, forSwedishWord: currentAnimal.swedish) {
-                // Rätt svar
+                
                 score += 10
                 scoreLabel?.text = "Points: \(score)"
                 showCorrectAnswerAnimation()
@@ -197,39 +175,16 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                 remainingTime = 8
                 startGame()
             } else {
-                // Fel svar
-                score = max(0, score - 5) // Förhindra negativ poäng
+                score = max(0, score - 5)
                 scoreLabel?.text = "Points: \(score)"
                 showWrongAnswerAnimation()
                 answerTextField?.text = ""
             }
         }
         
-        // MARK: - UITextFieldDelegate
+    
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            guard let userInput = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-                  !userInput.isEmpty,
-                  let currentAnimal = currentAnimal else {
-                return false
-            }
-            
-            if animalManager.checkCorrectAnswer(userInput: userInput, forSwedishWord: currentAnimal.swedish) {
-                // Rätt svar
-                score += 10
-                scoreLabel?.text = "Points: \(score)"
-                showCorrectAnswerAnimation()
-                countDownTimer?.invalidate()
-                shapeLayer.removeAllAnimations()
-                remainingTime = 8
-                startGame()
-            } else {
-                // Fel svar
-                score = max(0, score - 5) // Förhindra negativ poäng
-                scoreLabel?.text = "Points: \(score)"
-                showWrongAnswerAnimation()
-                textField.text = ""
-            }
-            
+            checkAnswer()
             textField.resignFirstResponder()
             return true
         }
@@ -248,19 +203,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }
         
         private func showWrongAnswerAnimation() {
-            UIView.animate(withDuration: 0.1, animations: {
-                self.answerTextField?.transform = CGAffineTransform(translationX: 10, y: 0)
-                self.answerTextField?.backgroundColor = UIColor.systemRed.withAlphaComponent(0.2)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.wordLabel?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                self.wordLabel?.textColor = .systemRed
             }) { _ in
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.answerTextField?.transform = CGAffineTransform(translationX: -10, y: 0)
-                }) { _ in
-                    UIView.animate(withDuration: 0.1) {
-                        self.answerTextField?.transform = .identity
-                        self.answerTextField?.backgroundColor = .clear
+                UIView.animate(withDuration: 0.3) {
+                    self.wordLabel?.transform = .identity
+                    self.wordLabel?.textColor = .label
                     }
                 }
             }
         }
-    }
-    
