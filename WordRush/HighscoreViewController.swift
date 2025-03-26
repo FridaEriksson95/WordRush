@@ -10,7 +10,10 @@ import UIKit
 class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var highscores: [HighScoreEntry] = []
     var getCurrentScore: Int = 0
+    
 
+    @IBOutlet weak var RankLabel: UILabel!
+    @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -44,7 +47,8 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         let highscore = highscores[indexPath.row]
         
         
-        cell.textLabel?.text = "\(highscore.rank). \(highscore.score) poäng"
+        cell.textLabel?.text = "\(highscore.rank).      \(highscore.score) poäng"
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 23)
         
         return cell
     }
