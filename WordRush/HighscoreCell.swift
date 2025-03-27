@@ -20,9 +20,9 @@ class HighscoreCell: UITableViewCell {
     private func setupCell() {
         // Konfigurera labels
         rankLabel.textAlignment = .left
-        rankLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+//        rankLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         scoreLabel.textAlignment = .center
-        scoreLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+//        scoreLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         
         // Lägg till i contentView
         contentView.addSubview(rankLabel)
