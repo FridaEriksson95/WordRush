@@ -2,7 +2,8 @@
 import UIKit
 
 class HighscoreCell: UITableViewCell {
-    // 1. Skapa dina egna labels
+    
+    // Skapa dina egna labels
     let rankLabel = UILabel()
     let scoreLabel = UILabel()
     
@@ -17,15 +18,17 @@ class HighscoreCell: UITableViewCell {
     }
     
     private func setupCell() {
-        // 2. Konfigurera labels
+        // Konfigurera labels
         rankLabel.textAlignment = .left
+        rankLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         scoreLabel.textAlignment = .center
+        scoreLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         
-        // 3. Lägg till i contentView
+        // Lägg till i contentView
         contentView.addSubview(rankLabel)
         contentView.addSubview(scoreLabel)
         
-        // 4. Ställ in Auto Layout constraints
+        //  Ställ in Auto Layout constraints
         rankLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         
