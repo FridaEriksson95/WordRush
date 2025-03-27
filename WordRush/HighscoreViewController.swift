@@ -36,7 +36,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.layer.shadowRadius = 5
         
         tableView.reloadData()
-
     }
 
     // MARK: - Table view data source

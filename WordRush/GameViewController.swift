@@ -15,6 +15,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     let shapeLayer = CAShapeLayer()
     var currentAnimal: (swedish: String, english: String)?
     private var previousLevel = 1
+    
     var remainingTime: Int {
         let baseTime = 8
         let currentLevel = animalManager.getCurrentLevel()
@@ -231,18 +232,18 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                 }
             }
     
-    private func showLevelUpAnimation() {
-        levelLabel?.alpha = 0
-        levelLabel?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        private func showLevelUpAnimation() {
+            levelLabel?.alpha = 0
+            levelLabel?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.levelLabel?.alpha = 1
-            self.levelLabel?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-            self.levelLabel?.textColor = .systemPink
-        }) { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.levelLabel?.transform = .identity
-                self.levelLabel?.textColor = .white
+            UIView.animate(withDuration: 0.5, animations: {
+                self.levelLabel?.alpha = 1
+                self.levelLabel?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                self.levelLabel?.textColor = .systemPink
+                }) { _ in
+                UIView.animate(withDuration: 0.3) {
+                    self.levelLabel?.transform = .identity
+                    self.levelLabel?.textColor = .white
             }
         }
     }

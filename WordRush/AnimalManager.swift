@@ -77,7 +77,7 @@ class AnimalManager {
         ("Bältdjur", "Armadillo"),
         ("Nyckelpiga 🐞", "Ladybug"),
         ("Ekorre 🐿️", "Squirrel"),
-        ("Igelkott 🦔", "Hedgehog"),
+        ("Igelkott 🦔", "Hedgehog")
     ]
     
       private var usedIndices: Set<Int> = []
