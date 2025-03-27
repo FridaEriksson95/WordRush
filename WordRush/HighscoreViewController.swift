@@ -10,7 +10,7 @@ import UIKit
 class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var highscores: [HighScoreEntry] = []
     var getCurrentScore: Int = 0
-    
+
     @IBOutlet weak var RankLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -20,8 +20,21 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         
         //hämta highscores från HighscoreManager
         highscores = HighScoreManager.shared.getAllHighscores()
-        
-        tableView.register(HighscoreCell.self, forCellReuseIdentifier: "highscoreCell")
+      
+        // Sortera (högsta först)
+        highscores.sort { $0.score > $1.score }
+      
+        // Tilldela emojis
+      for (index, var entry) in highscores.enumerated() {
+          if index == 0 {
+              entry.emoji = "🏆"  // Högsta poäng
+          } else if entry.score == getCurrentScore {
+              entry.emoji = "🎯"  // Aktuell spelare
+          } else {
+              entry.emoji = nil  // Återställ
+          }
+          highscores[index] = entry  // Uppdatera listan med ändrat objekt
+      }
         
         // Sätt delegate och dataSource
         tableView.dataSource = self
@@ -48,12 +61,29 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath) as! HighscoreCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath)
         
         let highscore = highscores[indexPath.row]
+      
+      // TextFormat
+        let displayText = "\(highscore.rank).".padding(toLength: 30, withPad: " ", startingAt: 0) +
+                          "\(highscore.score) poäng".padding(toLength: 30, withPad: " ", startingAt: 0) +
+                          (highscore.emoji ?? "")
         
-        cell.rankLabel.text = "\(highscore.rank)."
-        cell.scoreLabel.text = "\(highscore.score) poäng"
+      cell.textLabel?.text = displayText
+      
+      // MARKERA HÖGSTA POÄNGEN
+      switch highscore.emoji {
+              case "🏆":
+                  cell.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
+                  cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+              case "🎯":
+                  cell.backgroundColor = UIColor.green.withAlphaComponent(0.3)
+                  cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+              default:
+                  cell.backgroundColor = UIColor.clear
+                  cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+              }
         
         return cell
     }
