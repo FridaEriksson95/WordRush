@@ -58,16 +58,16 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return highscores.count
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath)
+        cell.accessoryType = .none
         
         let highscore = highscores[indexPath.row]
       
       // TextFormat
-        let displayText = "\(highscore.rank).".padding(toLength: 30, withPad: " ", startingAt: 0) +
-                          "\(highscore.score) poäng".padding(toLength: 30, withPad: " ", startingAt: 0) +
+        let displayText = "\(highscore.rank).".padding(toLength: 28, withPad: " ", startingAt: 0) +
+                          "\(highscore.score) poäng".padding(toLength: 28, withPad: " ", startingAt: 0) +
                           (highscore.emoji ?? "")
         
       cell.textLabel?.text = displayText
@@ -89,6 +89,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 45
     }
 }
