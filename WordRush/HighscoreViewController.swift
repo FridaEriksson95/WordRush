@@ -11,7 +11,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     private var highscores: [HighScoreEntry] = []
     var getCurrentScore: Int = 0
     
-
     @IBOutlet weak var RankLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!

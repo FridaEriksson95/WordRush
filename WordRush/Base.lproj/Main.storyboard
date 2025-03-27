@@ -27,9 +27,9 @@
                                 </constraints>
                                 <string key="text">The clock is ticking! 
 You have 8 - 6 - 4 seconds to translate the Swedish animal into English based on level. 
-A correct answer scores you 10 points, but a wrong guess will cost you 5 points. 
+A correct answer scores you 10 points, but a wrong guess will cost you 5. 
 
-Push your limits and chase the highest High Score!!</string>
+Push your limits and chase the highest High Score!</string>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

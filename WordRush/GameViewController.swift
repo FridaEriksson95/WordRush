@@ -2,7 +2,6 @@ import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
 
-
    @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!

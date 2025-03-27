@@ -2,6 +2,7 @@
 import UIKit
 
 class HighscoreCell: UITableViewCell {
+    
     // Skapa dina egna labels
     let rankLabel = UILabel()
     let scoreLabel = UILabel()
