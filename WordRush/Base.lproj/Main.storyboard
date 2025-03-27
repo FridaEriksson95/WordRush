@@ -16,28 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="StartBG" translatesAutoresizingMaskIntoConstraints="NO" id="p7Z-Dx-9A2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="StartBG" translatesAutoresizingMaskIntoConstraints="NO" id="p7Z-Dx-9A2">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usq-mo-L0r">
-                                <rect key="frame" x="56" y="343" width="279" height="245"/>
-                                <color key="backgroundColor" red="0.88509714179999999" green="0.89386047980000005" blue="0.89386047980000005" alpha="0.1469112169" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="gwW-WZ-Awf"/>
-                                </constraints>
-                                <string key="text">The clock is ticking! 
-You have 8 - 6 - 4 seconds to translate the Swedish animal into English based on level. 
-A correct answer scores you 10 points, but a wrong guess will cost you 5. 
-
-Push your limits and chase the highest High Score!</string>
-                                <color key="textColor" systemColor="systemGray3Color"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-Jp-T1V">
-                                <rect key="frame" x="141" y="668" width="111" height="35"/>
+                                <rect key="frame" x="140" y="689.33333333333337" width="111" height="37.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Q0X-wG-19x"/>
+                                    <constraint firstAttribute="height" constant="37.670000000000002" id="nbI-XF-0zb"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="START" cornerStyle="capsule">
@@ -45,23 +30,20 @@ Push your limits and chase the highest High Score!</string>
                                     <color key="baseBackgroundColor" name="AccentColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="b55-6A-aIe" kind="presentation" modalPresentationStyle="fullScreen" id="TWx-nm-nEk"/>
+                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qbh-8X-Tpi"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GAME INSTRUCTIONS" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ck-qi-cRj">
-                                <rect key="frame" x="57" y="299" width="279" height="36"/>
+                                <rect key="frame" x="56" y="270" width="279" height="36"/>
                                 <color key="backgroundColor" red="0.88509714179999999" green="0.89386047980000005" blue="0.89386047980000005" alpha="0.1469112169" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="sMw-Wb-IgO"/>
-                                </constraints>
                                 <color key="textColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-nY-Xvn">
-                                <rect key="frame" x="119" y="716" width="153" height="35"/>
+                                <rect key="frame" x="119" y="750" width="153" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="tLV-bg-5fd"/>
+                                    <constraint firstAttribute="height" constant="35" id="rad-dC-LZh"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="HIGHSCORE" cornerStyle="capsule">
@@ -72,50 +54,73 @@ Push your limits and chase the highest High Score!</string>
                                     <segue destination="UC4-Sx-udG" kind="presentation" modalPresentationStyle="fullScreen" id="Y1l-Jl-2IJ"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fWQ-CG-ij5">
+                                <rect key="frame" x="125" y="634.33333333333337" width="143" height="32"/>
+                                <color key="backgroundColor" red="0.5647059083" green="0.31764706970000001" blue="0.71372550729999995" alpha="0.51728062909999994" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="NQe-9s-Kge"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="English"/>
+                                    <segment title="Swedish"/>
+                                </segments>
+                                <color key="tintColor" red="0.67058825489999996" green="0.4352940917" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="languageChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="SEZ-68-0TI"/>
+                                </connections>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usq-mo-L0r">
+                                <rect key="frame" x="56" y="314" width="279" height="298"/>
+                                <color key="backgroundColor" red="0.88509714179999999" green="0.89386047980000005" blue="0.89386047980000005" alpha="0.1469112169" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="298" id="68R-eB-Q57"/>
+                                </constraints>
+                                <string key="text">The clock is ticking! 
+You have 8 - 6 - 4 seconds to translate the Swedish animal into English based on level. 
+A correct answer scores you 10 points, but a wrong guess will cost you 5. 
+
+Push your limits and chase the highest High Score!</string>
+                                <color key="textColor" systemColor="systemGray3Color"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0Y7-BD-F8e"/>
                             <constraint firstAttribute="bottom" secondItem="p7Z-Dx-9A2" secondAttribute="bottom" id="0r1-mF-Epn"/>
-                            <constraint firstItem="usq-mo-L0r" firstAttribute="top" secondItem="1Ck-qi-cRj" secondAttribute="bottom" constant="28" id="3dz-PM-FbV"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="3lM-9z-LeF"/>
-                            <constraint firstItem="usq-mo-L0r" firstAttribute="trailing" secondItem="1Ck-qi-cRj" secondAttribute="trailing" id="3uf-4D-mdS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usq-mo-L0r" secondAttribute="trailing" constant="58" id="4LX-6g-YYK"/>
+                            <constraint firstItem="1Ck-qi-cRj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="3zO-w1-Aqk"/>
                             <constraint firstAttribute="bottom" secondItem="p7Z-Dx-9A2" secondAttribute="bottom" id="56f-Or-amG"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="620-uf-HpM"/>
-                            <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="99l-hA-eLd"/>
+                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="6Wb-eF-qbn"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9rv-r4-ryS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usq-mo-L0r" secondAttribute="trailing" constant="58" id="Cjw-2H-v6Z"/>
-                            <constraint firstItem="1Ck-qi-cRj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="240" id="Gh6-qI-t7O"/>
-                            <constraint firstItem="CwR-nY-Xvn" firstAttribute="top" secondItem="uXr-Jp-T1V" secondAttribute="bottom" constant="13" id="JDa-HQ-5kR"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="centerX" secondItem="p7Z-Dx-9A2" secondAttribute="centerX" id="M6G-H9-sZ2"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mk5-vf-aUI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CwR-nY-Xvn" secondAttribute="trailing" constant="121" id="N0W-yA-FpE"/>
-                            <constraint firstItem="1Ck-qi-cRj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="57" id="OWC-ip-KhE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Ck-qi-cRj" secondAttribute="trailing" constant="57" id="PWW-eD-YMc"/>
-                            <constraint firstItem="usq-mo-L0r" firstAttribute="top" secondItem="1Ck-qi-cRj" secondAttribute="bottom" constant="8" symbolic="YES" id="Q80-2P-0q0"/>
-                            <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="1Ck-qi-cRj" secondAttribute="leading" id="RTE-IA-pgB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uXr-Jp-T1V" secondAttribute="bottom" constant="115" id="Ril-hE-uBu"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="top" secondItem="usq-mo-L0r" secondAttribute="bottom" constant="45" id="Tfw-dw-NCR"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="top" secondItem="usq-mo-L0r" secondAttribute="bottom" constant="80" id="UwX-QE-oa6"/>
-                            <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="VcA-4w-q5Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CwR-nY-Xvn" secondAttribute="bottom" constant="67" id="WbW-rL-3tk"/>
+                            <constraint firstItem="fWQ-CG-ij5" firstAttribute="top" secondItem="usq-mo-L0r" secondAttribute="bottom" constant="22.333333333333371" id="Agc-xN-q41"/>
+                            <constraint firstItem="CwR-nY-Xvn" firstAttribute="top" secondItem="uXr-Jp-T1V" secondAttribute="bottom" constant="23" id="HGj-S4-178"/>
+                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="top" secondItem="fWQ-CG-ij5" secondAttribute="bottom" constant="24" id="NvI-r2-xCm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CwR-nY-Xvn" secondAttribute="bottom" constant="67" id="NyO-iY-ikX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usq-mo-L0r" secondAttribute="trailing" constant="58" id="ON6-kq-k2r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CwR-nY-Xvn" secondAttribute="trailing" constant="121" id="OcV-Rs-PKQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uXr-Jp-T1V" secondAttribute="trailing" constant="142" id="TBl-Gs-Iw5"/>
+                            <constraint firstItem="usq-mo-L0r" firstAttribute="top" secondItem="1Ck-qi-cRj" secondAttribute="bottom" constant="8" symbolic="YES" id="cHN-ca-wst"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cOI-3E-ayg"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fMa-eL-jdv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Ck-qi-cRj" secondAttribute="trailing" constant="58" id="gEP-jH-ELq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fWQ-CG-ij5" secondAttribute="trailing" constant="125" id="ijA-pk-6JH"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kXd-hl-vbs"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="centerX" secondItem="p7Z-Dx-9A2" secondAttribute="centerX" id="nKc-bL-nAf"/>
-                            <constraint firstItem="CwR-nY-Xvn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="ooM-hU-OMG"/>
-                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="twx-bb-7yw"/>
+                            <constraint firstItem="CwR-nY-Xvn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="sSW-Wp-RWP"/>
+                            <constraint firstItem="fWQ-CG-ij5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="u5o-7g-BSY"/>
+                            <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="vzs-qp-iBa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="languageSelector" destination="fWQ-CG-ij5" id="peD-n6-4Wv"/>
                         <outlet property="textLabel" destination="usq-mo-L0r" id="H5h-zV-dNF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="-469"/>
+            <point key="canvasLocation" x="49.618320610687022" y="-469.0140845070423"/>
         </scene>
         <!--Highscore View Controller-->
         <scene sceneID="EhL-YP-VKG">
@@ -170,7 +175,7 @@ Push your limits and chase the highest High Score!</string>
                                     <color key="baseBackgroundColor" red="0.5647059083" green="0.3058823645" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="b55-6A-aIe" kind="presentation" modalPresentationStyle="fullScreen" id="rj0-SL-soL"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Atx-m0-cef"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIGHSCORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-ko-gH5">
@@ -210,17 +215,17 @@ Push your limits and chase the highest High Score!</string>
         <scene sceneID="2zF-mh-T7D">
             <objects>
                 <viewController storyboardIdentifier="GameViewController" id="b55-6A-aIe" customClass="GameViewController" customModule="WordRush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hMd-KY-P1y">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="hMd-KY-P1y">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bkg_img" translatesAutoresizingMaskIntoConstraints="NO" id="QXl-iH-fh4">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="852"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="852" id="e7c-Vd-EOk"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8x-BG-puy">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8x-BG-puy">
                                 <rect key="frame" x="153" y="525" width="87" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="NOp-nI-CCf"/>
@@ -231,7 +236,7 @@ Push your limits and chase the highest High Score!</string>
                                     <color key="baseBackgroundColor" red="0.38823530080000002" green="0.1686274707" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
                                 <rect key="frame" x="16" y="309" width="361" height="61"/>
                                 <color key="backgroundColor" red="0.78431367870000002" green="0.59607845540000004" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -241,7 +246,7 @@ Push your limits and chase the highest High Score!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your guess" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-6T-F27">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your guess" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-6T-F27">
                                 <rect key="frame" x="51" y="444" width="290" height="34"/>
                                 <color key="backgroundColor" red="0.78431367870000002" green="0.59607845540000004" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -251,7 +256,7 @@ Push your limits and chase the highest High Score!</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-Bu-7D5">
-                                <rect key="frame" x="0.0" y="144" width="393" height="21"/>
+                                <rect key="frame" x="0.0" y="203" width="393" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="G9P-Lu-HhE"/>
                                 </constraints>
@@ -259,7 +264,7 @@ Push your limits and chase the highest High Score!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pq3-V6-ifS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Level 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pq3-V6-ifS">
                                 <rect key="frame" x="113" y="731" width="167" height="21"/>
                                 <color key="backgroundColor" red="0.5647059083" green="0.31764706970000001" blue="0.71372550729999995" alpha="0.51728062909999994" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.61176472900000001" green="0.34509804840000002" blue="0.77254903320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -270,7 +275,7 @@ Push your limits and chase the highest High Score!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9E-qv-Ady">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Points: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9E-qv-Ady">
                                 <rect key="frame" x="113" y="675" width="167" height="21"/>
                                 <color key="backgroundColor" red="0.5647059083" green="0.31764706970000001" blue="0.71372550729999995" alpha="0.5172806291390728" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.61176472900000001" green="0.34509804840000002" blue="0.77254903320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -327,8 +332,7 @@ Push your limits and chase the highest High Score!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rj0-SL-soL"/>
-        <segue reference="oHb-Jy-j1T"/>
+        <segue reference="Y1l-Jl-2IJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Bkg_img" width="1080" height="1920"/>
@@ -340,10 +344,10 @@ Push your limits and chase the highest High Score!</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

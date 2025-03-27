@@ -2,18 +2,19 @@ import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
     
-   @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var EnterButton: UIButton!
     @IBOutlet weak var levelLabel: UILabel!
     
-    let animalManager = AnimalManager()
+    let animalManager = AnimalManager.shared
     var countDownTimer: Timer?
     let shapeLayer = CAShapeLayer()
     var currentAnimal: (swedish: String, english: String)?
     private var previousLevel = 1
+    var selectedLanguage: String = "english"
     
     var remainingTime: Int {
         let baseTime = 8
@@ -24,6 +25,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         answerTextField.delegate = self
         answerTextField.returnKeyType = .done
@@ -54,7 +56,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func showStartAlert() {
         let alert = UIAlertController(
             title: "Would you like to start?",
-            message: nil,
+            message: "Language: \(selectedLanguage)",
             preferredStyle: .alert
         )
         
@@ -96,8 +98,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startGame() {
         if let animal = animalManager.getRandomAnimal() {
-            wordLabel.text = animal.swedish
             currentAnimal = animal
+            if selectedLanguage == "english" {
+                wordLabel.text = animal.swedish
+            } else if selectedLanguage == "swedish" {
+                wordLabel.text = animal.english
+            }
         } else {
             wordLabel.text = "You succeded with all animals! Congratz!"
             navigateToHighScore()
@@ -169,12 +175,18 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @objc func checkAnswer() {
             guard let userInput = answerTextField?.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                   !userInput.isEmpty,
-                  let currentAnimal = currentAnimal else {
-                return
-            }
+                  let currentAnimal = currentAnimal else { return }
             
-            if animalManager.checkCorrectAnswer(userInput: userInput, forSwedishWord: currentAnimal.swedish) {
-                
+        let isCorrect: Bool
+        if selectedLanguage == "english" {
+            isCorrect = animalManager.checkCorrectAnswer(userInput: userInput, forSwedishWord: currentAnimal.swedish)
+        } else  if selectedLanguage == "swedish" {
+            isCorrect = animalManager.checkCorrectAnswer(userInput: userInput, forEnglishWord: currentAnimal.english)
+        } else {
+            isCorrect = false
+        }
+        
+        if isCorrect {
                 animalManager.increaseScore(by: 10)
                 showCorrectAnswerAnimation()
                 countDownTimer?.invalidate()
