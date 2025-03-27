@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController, UITextFieldDelegate {
 
@@ -15,6 +16,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     let shapeLayer = CAShapeLayer()
     var currentAnimal: (swedish: String, english: String)?
     var score = 0
+    var audioPlayer: AVAudioPlayer?
+    var tickPlayer: AVAudioPlayer?
     
     
     override func viewDidLoad() {
@@ -116,6 +119,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         animation.duration = CFTimeInterval(remainingTime)
         animation.isRemovedOnCompletion = false
         shapeLayer.add(animation, forKey: "countdown")
+      
+        playTickSound()
         
         countDownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
@@ -124,12 +129,30 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self.timerLabel.text = "\(self.remainingTime)"
             
             if self.remainingTime <= 0 {
+                self.stopTickSound()
+                self.playSound(named: "time-over")
                 timer.invalidate()
                 HighScoreManager.shared.addHighscore(score: self.score)
                 self.navigateToHighScore()
             }
         }
     }
+  
+  func playTickSound() {
+      if let soundURL = Bundle.main.url(forResource: "tick", withExtension: "mp3") {
+          do {
+              tickPlayer = try AVAudioPlayer(contentsOf: soundURL)
+              tickPlayer?.numberOfLoops = -1 // Loopa ljudet
+              tickPlayer?.play()
+          } catch {
+              print("Could not play ticking sound: \(error.localizedDescription)")
+          }
+      }
+  }
+
+  func stopTickSound() {
+      tickPlayer?.stop()
+  }
 
     func resetGame() {
         score = 0
@@ -168,6 +191,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
             if animalManager.checkCorrectAnswer(userInput: userInput, forSwedishWord: currentAnimal.swedish) {
                 
+                playSound(named: "correct")
                 score += 10
                 scoreLabel?.text = "Points: \(score)"
                 showCorrectAnswerAnimation()
@@ -176,6 +200,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                 remainingTime = 8
                 startGame()
             } else {
+                playSound(named: "error")
                 score -= 5
                 scoreLabel?.text = "Points: \(score)"
                 showWrongAnswerAnimation()
@@ -183,6 +208,17 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
+        // Spela ljud
+        func playSound(named soundName: String) {
+            if let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                    audioPlayer?.play()
+                } catch {
+                    print("Could not play sound: \(error.localizedDescription)")
+                }
+            }
+        }
     
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             checkAnswer()
