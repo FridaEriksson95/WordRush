@@ -19,19 +19,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="StartBG" translatesAutoresizingMaskIntoConstraints="NO" id="p7Z-Dx-9A2">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usq-mo-L0r">
-                                <rect key="frame" x="56" y="343" width="279" height="245"/>
-                                <color key="backgroundColor" red="0.88509714179999999" green="0.89386047980000005" blue="0.89386047980000005" alpha="0.1469112169" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="245" id="0W7-Q9-Cn1"/>
-                                </constraints>
-                                <string key="text">När du startar spelet drar timern igång och du har 8 sekunder på dig att översätta det svenska djuret till engelska. Korrekt ord ger 10 poäng medans fel gissning ger 5 poängs avdrag. Utmana dig själv till högst HighScore!</string>
-                                <color key="textColor" systemColor="systemGray3Color"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                          
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="SPEL INSTRUKTIONER" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ck-qi-cRj">
                                 <rect key="frame" x="56" y="279" width="279" height="36"/>
                                 <color key="backgroundColor" red="0.88509714179999999" green="0.89386047980000005" blue="0.89386047980000005" alpha="0.1469112169" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,7 +60,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="245" id="Adl-c1-wAH"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <string key="text">När du startar spelet drar timern igång och du har 8 sekunder på dig att översätta det svenska djuret till engelska. Korrekt ord ger 10 poäng medans fel gissning ger 5 poängs avdrag. Utmana dig själv till högst HighScore!</string>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -123,28 +110,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-V8-xYO">
-                                <rect key="frame" x="0.0" y="130" width="393" height="442"/>
+                                <rect key="frame" x="0.0" y="130" width="393" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="highscoreCell" id="npo-ju-0sL">
                                         <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="npo-ju-0sL" id="9R6-8t-Ayh">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
-
-
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VB3-V8-VU8">
-                                                    <rect key="frame" x="20" y="0.0" width="321" height="43.666667938232422"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -177,7 +152,7 @@
                         <color key="backgroundColor" red="0.5647059083" green="0.3058823645" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="gEE-V8-xYO" secondAttribute="bottom" constant="168" id="7GD-qx-xem"/>
+                            <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="gEE-V8-xYO" secondAttribute="bottom" constant="37" id="7GD-qx-xem"/>
                             <constraint firstItem="XLO-Md-p4W" firstAttribute="trailing" secondItem="JZ3-ko-gH5" secondAttribute="trailing" constant="115" id="Dyk-Ff-Nb5"/>
                             <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="JZ3-ko-gH5" secondAttribute="bottom" constant="618" id="F8N-M3-e8d"/>
                             <constraint firstItem="JZ3-ko-gH5" firstAttribute="leading" secondItem="XLO-Md-p4W" secondAttribute="leading" constant="115" id="N7k-j6-LlO"/>
@@ -210,7 +185,7 @@
                                     <constraint firstAttribute="height" constant="852" id="e7c-Vd-EOk"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9E-qv-Ady">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antal Rätt: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9E-qv-Ady">
                                 <rect key="frame" x="128" y="687" width="167" height="21"/>
                                 <color key="backgroundColor" red="0.5647059083" green="0.31764706970000001" blue="0.71372550729999995" alpha="0.5172806291390728" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.61176472900000001" green="0.34509804840000002" blue="0.77254903320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -232,13 +207,13 @@
                                     <color key="baseBackgroundColor" red="0.38823530080000002" green="0.1686274707" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ORD" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
                                 <rect key="frame" x="16" y="309" width="361" height="61"/>
                                 <color key="backgroundColor" red="0.78431367870000002" green="0.59607845540000004" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="ypr-Pq-Cvr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
