@@ -8,14 +8,19 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var EnterButton: UIButton!
+    @IBOutlet weak var levelLabel: UILabel!
     
     let animalManager = AnimalManager()
     var countDownTimer: Timer?
-    var remainingTime = 8
     let shapeLayer = CAShapeLayer()
     var currentAnimal: (swedish: String, english: String)?
-    var score = 0
-    
+    private var previousLevel = 1
+    var remainingTime: Int {
+        let baseTime = 8
+        let currentLevel = animalManager.getCurrentLevel()
+        let calculatedTime = max(baseTime - (currentLevel - 1) * 2, 3)
+        return calculatedTime
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,28 +38,30 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func setupUI() {
         guard let wordLabel = wordLabel,
               let scoreLabel = scoreLabel,
-              let timerLabel = timerLabel
-        else { return
-        }
+              let timerLabel = timerLabel,
+              let levelLabel = levelLabel
+        else { return }
         
         wordLabel.layer.cornerRadius = 20
         wordLabel.layer.masksToBounds = true
         scoreLabel.text = "Points: 0"
+        levelLabel.text = "Level: \(animalManager.getCurrentLevel())"
         timerLabel.isHidden = true
+        previousLevel = animalManager.getCurrentLevel()
     }
 
     
     func showStartAlert() {
         let alert = UIAlertController(
-            title: "Vill du starta spelet?",
+            title: "Would you like to start?",
             message: nil,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "Starta", style: .default) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "Start", style: .default) { [weak self] _ in
             self?.startGame()
         })
-        alert.addAction(UIAlertAction(title: "Avbryt", style: .cancel) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
             self?.navigateBackToStart()
         })
         
@@ -100,6 +107,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         setupCountDownCircle()
         startCountDown()
         answerTextField.text = ""
+        updateScoreAndLevel()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.answerTextField.becomeFirstResponder()
@@ -108,7 +116,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startCountDown() {
         timerLabel.isHidden = false
-        timerLabel.text = "\(remainingTime)"
+        var timeLeft = remainingTime
+        timerLabel.text = "\(timeLeft)"
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 1.0
@@ -120,29 +129,27 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         countDownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
             
-            self.remainingTime -= 1
-            self.timerLabel.text = "\(self.remainingTime)"
+            timeLeft -= 1
+            self.timerLabel.text = "\(timeLeft)"
             
-            if self.remainingTime <= 0 {
+            if timeLeft <= 0 {
                 timer.invalidate()
-                HighScoreManager.shared.addHighscore(score: self.score)
+                HighScoreManager.shared.addHighscore(score: animalManager.getCurrentScore())
                 self.navigateToHighScore()
             }
         }
     }
 
     func resetGame() {
-        score = 0
-        scoreLabel.text = "Points: 0"
-        remainingTime = 8
+        animalManager.resetGame()
         startGame()
         resetTimer()
+        previousLevel = 1
     }
     
     func resetTimer() {
         countDownTimer?.invalidate()
         shapeLayer.removeAllAnimations()
-        remainingTime = 8
     }
     
     func navigateBackToStart() {
@@ -155,7 +162,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHighScore",
            let highScoreVC = segue.destination as? HighscoreViewController {
-            highScoreVC.getCurrentScore = self.score
+            highScoreVC.getCurrentScore = animalManager.getCurrentScore()
         }
     }
     
@@ -168,27 +175,36 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
             if animalManager.checkCorrectAnswer(userInput: userInput, forSwedishWord: currentAnimal.swedish) {
                 
-                score += 10
-                scoreLabel?.text = "Points: \(score)"
+                animalManager.increaseScore(by: 10)
                 showCorrectAnswerAnimation()
                 countDownTimer?.invalidate()
                 shapeLayer.removeAllAnimations()
-                remainingTime = 8
+                resetTimer()
                 startGame()
             } else {
-                score -= 5
-                scoreLabel?.text = "Points: \(score)"
+                animalManager.increaseScore(by: -5)
                 showWrongAnswerAnimation()
                 answerTextField?.text = ""
+                updateScoreAndLevel()
             }
         }
         
-    
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             checkAnswer()
             textField.resignFirstResponder()
             return true
         }
+    
+    func updateScoreAndLevel() {
+        scoreLabel?.text = "Points: \(animalManager.getCurrentScore())"
+        let currentLevel = animalManager.getCurrentLevel()
+        levelLabel?.text = "Level: \(currentLevel)"
+        
+        if currentLevel > previousLevel {
+            showLevelUpAnimation()
+            previousLevel = currentLevel
+        }
+    }
         
         // MARK: - Animations
         private func showCorrectAnswerAnimation() {
@@ -214,4 +230,20 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
+    
+    private func showLevelUpAnimation() {
+        levelLabel?.alpha = 0
+        levelLabel?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.levelLabel?.alpha = 1
+            self.levelLabel?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.levelLabel?.textColor = .systemPink
+        }) { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.levelLabel?.transform = .identity
+                self.levelLabel?.textColor = .white
+            }
         }
+    }
+}
