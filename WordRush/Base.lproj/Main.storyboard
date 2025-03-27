@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="StartBG" translatesAutoresizingMaskIntoConstraints="NO" id="p7Z-Dx-9A2">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="874"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usq-mo-L0r">
-                                <rect key="frame" x="56" y="343" width="279" height="280"/>
+                                <rect key="frame" x="56" y="343" width="279" height="267"/>
                                 <color key="backgroundColor" red="0.88509714179999999" green="0.89386047980000005" blue="0.89386047980000005" alpha="0.1469112169" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="gwW-WZ-Awf"/>
@@ -35,12 +35,12 @@ Push your limits and chase the highest High Score!</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-Jp-T1V">
-                                <rect key="frame" x="141" y="668" width="111" height="35"/>
+                                <rect key="frame" x="141" y="690" width="111" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="xyo-BF-uG0"/>
+                                    <constraint firstAttribute="height" constant="35" id="Q0X-wG-19x"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="START">
+                                <buttonConfiguration key="configuration" style="filled" title="START" cornerStyle="capsule">
                                     <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                     <color key="baseBackgroundColor" name="AccentColor"/>
                                 </buttonConfiguration>
@@ -58,30 +58,64 @@ Push your limits and chase the highest High Score!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-nY-Xvn">
+                                <rect key="frame" x="119" y="738" width="153" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="tLV-bg-5fd"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="HIGHSCORE" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                    <color key="baseBackgroundColor" red="0.55931789499999995" green="0.25883703689999998" blue="0.71236538179999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="UC4-Sx-udG" kind="presentation" modalPresentationStyle="fullScreen" id="Y1l-Jl-2IJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="p7Z-Dx-9A2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0Y7-BD-F8e"/>
                             <constraint firstAttribute="bottom" secondItem="p7Z-Dx-9A2" secondAttribute="bottom" id="0r1-mF-Epn"/>
+                            <constraint firstItem="usq-mo-L0r" firstAttribute="top" secondItem="1Ck-qi-cRj" secondAttribute="bottom" constant="28" id="3dz-PM-FbV"/>
                             <constraint firstItem="uXr-Jp-T1V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="3lM-9z-LeF"/>
+                            <constraint firstItem="usq-mo-L0r" firstAttribute="trailing" secondItem="1Ck-qi-cRj" secondAttribute="trailing" id="3uf-4D-mdS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usq-mo-L0r" secondAttribute="trailing" constant="58" id="4LX-6g-YYK"/>
+                            <constraint firstAttribute="bottom" secondItem="p7Z-Dx-9A2" secondAttribute="bottom" id="56f-Or-amG"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="620-uf-HpM"/>
+                            <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="99l-hA-eLd"/>
+                            <constraint firstItem="p7Z-Dx-9A2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9rv-r4-ryS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usq-mo-L0r" secondAttribute="trailing" constant="58" id="Cjw-2H-v6Z"/>
                             <constraint firstItem="1Ck-qi-cRj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="240" id="Gh6-qI-t7O"/>
+                            <constraint firstItem="CwR-nY-Xvn" firstAttribute="top" secondItem="uXr-Jp-T1V" secondAttribute="bottom" constant="13" id="JDa-HQ-5kR"/>
+                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="centerX" secondItem="p7Z-Dx-9A2" secondAttribute="centerX" id="M6G-H9-sZ2"/>
+                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mk5-vf-aUI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CwR-nY-Xvn" secondAttribute="trailing" constant="121" id="N0W-yA-FpE"/>
                             <constraint firstItem="1Ck-qi-cRj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="57" id="OWC-ip-KhE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Ck-qi-cRj" secondAttribute="trailing" constant="57" id="PWW-eD-YMc"/>
                             <constraint firstItem="usq-mo-L0r" firstAttribute="top" secondItem="1Ck-qi-cRj" secondAttribute="bottom" constant="8" symbolic="YES" id="Q80-2P-0q0"/>
+                            <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="1Ck-qi-cRj" secondAttribute="leading" id="RTE-IA-pgB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uXr-Jp-T1V" secondAttribute="bottom" constant="115" id="Ril-hE-uBu"/>
                             <constraint firstItem="uXr-Jp-T1V" firstAttribute="top" secondItem="usq-mo-L0r" secondAttribute="bottom" constant="45" id="Tfw-dw-NCR"/>
+                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="top" secondItem="usq-mo-L0r" secondAttribute="bottom" constant="80" id="UwX-QE-oa6"/>
                             <constraint firstItem="usq-mo-L0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="VcA-4w-q5Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CwR-nY-Xvn" secondAttribute="bottom" constant="67" id="WbW-rL-3tk"/>
+                            <constraint firstItem="p7Z-Dx-9A2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cOI-3E-ayg"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fMa-eL-jdv"/>
                             <constraint firstItem="p7Z-Dx-9A2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kXd-hl-vbs"/>
                             <constraint firstItem="uXr-Jp-T1V" firstAttribute="centerX" secondItem="p7Z-Dx-9A2" secondAttribute="centerX" id="nKc-bL-nAf"/>
+                            <constraint firstItem="CwR-nY-Xvn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="ooM-hU-OMG"/>
+                            <constraint firstItem="uXr-Jp-T1V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="twx-bb-7yw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textLabel" destination="usq-mo-L0r" id="H5h-zV-dNF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113.74045801526717" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="51" y="-469"/>
         </scene>
         <!--Highscore View Controller-->
         <scene sceneID="EhL-YP-VKG">
@@ -99,7 +133,7 @@ Push your limits and chase the highest High Score!</string>
                                 <rect key="frame" x="16" y="152" width="361" height="514"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="514" id="aj6-h2-hcT"/>
+                                    <constraint firstAttribute="height" constant="514" id="gld-DH-p32"/>
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -142,6 +176,7 @@ Push your limits and chase the highest High Score!</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIGHSCORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-ko-gH5">
                                 <rect key="frame" x="115" y="53" width="163" height="91"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="91" id="CgJ-Jg-nCD"/>
                                     <constraint firstAttribute="height" constant="91" id="nlD-Y1-DCR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
@@ -153,22 +188,23 @@ Push your limits and chase the highest High Score!</string>
                         <color key="backgroundColor" red="0.5647059083" green="0.3058823645" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gEE-V8-xYO" firstAttribute="top" secondItem="JZ3-ko-gH5" secondAttribute="bottom" constant="8" symbolic="YES" id="1M1-c7-4P7"/>
-                            <constraint firstItem="XLO-Md-p4W" firstAttribute="trailing" secondItem="JZ3-ko-gH5" secondAttribute="trailing" constant="115" id="Dwz-SW-6vr"/>
-                            <constraint firstItem="JZ3-ko-gH5" firstAttribute="leading" secondItem="XLO-Md-p4W" secondAttribute="leading" constant="115" id="fNu-lc-PWX"/>
-                            <constraint firstItem="gEE-V8-xYO" firstAttribute="leading" secondItem="XLO-Md-p4W" secondAttribute="leading" constant="16" id="fsa-Dc-iE6"/>
-                            <constraint firstItem="JZ3-ko-gH5" firstAttribute="top" secondItem="XLO-Md-p4W" secondAttribute="top" constant="53" id="krr-zK-gYM"/>
-                            <constraint firstItem="XLO-Md-p4W" firstAttribute="trailing" secondItem="gEE-V8-xYO" secondAttribute="trailing" constant="16" id="orJ-3p-neG"/>
-                            <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="gEE-V8-xYO" secondAttribute="bottom" constant="74" id="tdk-yV-ixW"/>
+                            <constraint firstItem="XLO-Md-p4W" firstAttribute="trailing" secondItem="gEE-V8-xYO" secondAttribute="trailing" constant="16" id="4Xr-2t-ARM"/>
+                            <constraint firstItem="dj5-qZ-YYq" firstAttribute="top" secondItem="gEE-V8-xYO" secondAttribute="bottom" constant="74" id="AHx-fq-QEl"/>
+                            <constraint firstItem="XLO-Md-p4W" firstAttribute="trailing" secondItem="JZ3-ko-gH5" secondAttribute="trailing" constant="115" id="AMD-zL-cUw"/>
+                            <constraint firstItem="JZ3-ko-gH5" firstAttribute="top" secondItem="XLO-Md-p4W" secondAttribute="top" constant="53" id="Nss-AE-CZN"/>
+                            <constraint firstItem="gEE-V8-xYO" firstAttribute="leading" secondItem="XLO-Md-p4W" secondAttribute="leading" constant="16" id="Xg5-GY-F7A"/>
+                            <constraint firstItem="gEE-V8-xYO" firstAttribute="top" secondItem="JZ3-ko-gH5" secondAttribute="bottom" constant="8" symbolic="YES" id="bU3-EZ-fNw"/>
+                            <constraint firstItem="JZ3-ko-gH5" firstAttribute="leading" secondItem="XLO-Md-p4W" secondAttribute="leading" constant="115" id="s6U-8a-PpU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ogk-XY-Hio"/>
                     <connections>
                         <outlet property="tableView" destination="gEE-V8-xYO" id="wMJ-t7-bLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Lb-Ye-erA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.8931297709923" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1529" y="-469"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="2zF-mh-T7D">
@@ -190,18 +226,18 @@ Push your limits and chase the highest High Score!</string>
                                     <constraint firstAttribute="height" constant="35" id="NOp-nI-CCf"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="ENTER">
+                                <buttonConfiguration key="configuration" style="filled" title="ENTER" cornerStyle="capsule">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" red="0.38823530080000002" green="0.1686274707" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ORD" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yje-M2-OHd">
                                 <rect key="frame" x="16" y="309" width="361" height="61"/>
                                 <color key="backgroundColor" red="0.78431367870000002" green="0.59607845540000004" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="ypr-Pq-Cvr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
@@ -287,11 +323,12 @@ Push your limits and chase the highest High Score!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWf-7c-E66" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907.63358778625945" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="818" y="-468"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TWx-nm-nEk"/>
+        <segue reference="rj0-SL-soL"/>
+        <segue reference="Y1l-Jl-2IJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Bkg_img" width="1080" height="1920"/>
