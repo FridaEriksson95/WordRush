@@ -13,17 +13,8 @@ class HighScoreManager {
     private let highScoresKey = "HighScores"
     
     private init() {
-        // Lägg till några test-highscores
-//        generateTestData()
         loadHighScores()
     }
-    
-    //TEST UTSKRIFT
-//    private func generateTestData() {
-//        highscores = [
-//
-//        ]
-//    }
     
     func getAllHighscores() -> [HighScoreEntry] {
         return highscores
@@ -51,7 +42,18 @@ class HighScoreManager {
         saveHighScores()
     }
     
-    private func saveHighScores() {
+    func removeHighScore(at index: Int) {
+        guard index >= 0 && index < highscores.count else { return }
+        highscores.remove(at: index)
+        
+        for(index, _) in highscores.enumerated() {
+            highscores[index] = HighScoreEntry(
+                score: highscores[index].score, rank: index + 1)
+        }
+        saveHighScores()
+    }
+    
+    func saveHighScores() {
         if let encoded = try? JSONEncoder().encode(highscores) {
             UserDefaults.standard.set(encoded, forKey: highScoresKey)
         }

@@ -11,7 +11,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     private var highscores: [HighScoreEntry] = []
     var getCurrentScore: Int = 0
     
-
     @IBOutlet weak var RankLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -22,82 +21,117 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         //hämta highscores från HighscoreManager
         highscores = HighScoreManager.shared.getAllHighscores()
         
-        tableView.register(HighscoreCell.self, forCellReuseIdentifier: "highscoreCell")
+        // Sortera (högsta först)
+        highscores.sort { $0.score > $1.score }
+        
+        // Tilldela emojis
+        for (index, var entry) in highscores.enumerated() {
+            if index == 0 {
+                entry.emoji = "🏆"  // Högsta poäng
+            } else if entry.score == getCurrentScore {
+                entry.emoji = "🎯"  // Aktuell spelare
+            } else {
+                entry.emoji = nil  // Återställ
+            }
+            highscores[index] = entry  // Uppdatera listan med ändrat objekt
+        }
         
         // Sätt delegate och dataSource
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.layer.cornerRadius = 15
+        tableView.layer.masksToBounds = true
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOpacity = 0.5
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        tableView.layer.shadowRadius = 5
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        tableView.addGestureRecognizer(longPressGesture)
+        
         tableView.reloadData()
-
     }
-
+    
     // MARK: - Table view data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return highscores.count
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath) as! HighscoreCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath)
+        cell.accessoryType = .none
         
         let highscore = highscores[indexPath.row]
         
-        cell.rankLabel.text = "\(highscore.rank)."
-        cell.scoreLabel.text = "\(highscore.score) poäng"
+        // TextFormat
+        let displayText = "\(highscore.rank).".padding(toLength: 28, withPad: " ", startingAt: 0) +
+        "\(highscore.score) points".padding(toLength: 28, withPad: " ", startingAt: 0) +
+        (highscore.emoji ?? "")
+        
+        cell.textLabel?.text = displayText
+        
+        // MARKERA HÖGSTA POÄNGEN
+        switch highscore.emoji {
+        case "🏆":
+            cell.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        case "🎯":
+            cell.backgroundColor = UIColor.green.withAlphaComponent(0.3)
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        default:
+            cell.backgroundColor = UIColor.clear
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+        }
         
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            let touchPoint = gestureRecognizer.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                presentDeleteAlert(for: indexPath)
+            }
         }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
-    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
+    func presentDeleteAlert(for indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Delete", message: "Would you like to delete this highscore?", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            self.deleteHighScore(at: indexPath)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
     
-
+    func deleteHighScore(at indexPath: IndexPath) {
+        HighScoreManager.shared.removeHighScore(at: indexPath.row)
+        highscores = HighScoreManager.shared.getAllHighscores()
+        
+        for (index, var entry) in highscores.enumerated() {
+            if index == 0 {
+            entry.emoji = "🏆"
+        } else if entry.score == getCurrentScore {
+            entry.emoji = "🎯"
+        } else {
+            entry.emoji = nil
+        }
+        highscores[index] = entry
+    }
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }
-

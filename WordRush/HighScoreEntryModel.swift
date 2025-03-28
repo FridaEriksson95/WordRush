@@ -10,4 +10,5 @@ import Foundation
 struct HighScoreEntry: Codable {
     let score: Int
     let rank: Int
+    var emoji: String?
 }
