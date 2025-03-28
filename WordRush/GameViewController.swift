@@ -214,16 +214,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                 animalManager.increaseScore(by: 10)
                 showCorrectAnswerAnimation()
                 playSound(named: "correct")
-                score += 10
-                scoreLabel?.text = "Points: \(score)"
                 countDownTimer?.invalidate()
                 shapeLayer.removeAllAnimations()
                 resetTimer()
                 startGame()
             } else {
                 playSound(named: "error")
-                score -= 5
-                scoreLabel?.text = "Points: \(score)"
                 animalManager.increaseScore(by: -5)
                 showWrongAnswerAnimation()
                 answerTextField?.text = ""

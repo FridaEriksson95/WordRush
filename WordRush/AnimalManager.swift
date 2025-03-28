@@ -30,7 +30,6 @@ class AnimalManager {
         ("Delfin 🐬", "Dolphin 🐬"),
         ("Haj 🦈", "Shark 🦈"),
         ("Kanin 🐇", "Rabbit 🐇"),
-        ("Spindel 🕷️", "Spider 🕷️"),
         ("Björn 🐻", "Bear 🐻"),
         ("Hamster 🐱", "Hamster 🐱"),
         ("Svan 🦢", "Swan 🦢"),
