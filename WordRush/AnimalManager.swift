@@ -11,73 +11,74 @@ class AnimalManager {
     static let shared = AnimalManager()
     
     private let easyAnimals: [(swedish: String, english: String)] = [
-        ("Lejon 🦁", "Lion"),
-        ("Tiger 🐅", "Tiger"),
-        ("Elefant 🐘", "Elephant"),
-        ("Giraff 🦒", "Giraffe"),
-        ("Zebra 🦓", "Zebra"),
-        ("Panda 🐼", "Panda"),
-        ("Varg 🐺", "Wolf"),
-        ("Räv 🦊", "Fox"),
-        ("Ko 🐄", "Cow"),
-        ("Häst 🐎", "Horse"),
-        ("Gris 🐖", "Pig"),
-        ("Får 🐑", "Sheep"),
-        ("Get 🐐", "Goat"),
-        ("Hund 🐕", "Dog"),
-        ("Katt 🐈", "Cat"),
-        ("Uggla 🦉", "Owl"),
-        ("Delfin 🐬", "Dolphin"),
-        ("Haj 🦈", "Shark"),
-        ("Kanin🐇", "Rabbit"),
-        ("Spindel 🕷️", "Spider"),
-        ("Björn 🐻", "Bear"),
-        ("Hamster", "Hamster"),
-        ("Svan 🦢", "Swan"),
-        ("Anka 🦆", "Duck"),
+        ("Lejon 🦁", "Lion 🦁"),
+        ("Tiger 🐅", "Tiger 🐅"),
+        ("Elefant 🐘", "Elephant 🐘"),
+        ("Giraff 🦒", "Giraffe 🦒"),
+        ("Zebra 🦓", "Zebra 🦓"),
+        ("Panda 🐼", "Panda 🐼"),
+        ("Varg 🐺", "Wolf 🐺"),
+        ("Räv 🦊", "Fox 🦊"),
+        ("Ko 🐄", "Cow 🐄"),
+        ("Häst 🐎", "Horse 🐎"),
+        ("Gris 🐖", "Pig 🐖"),
+        ("Får 🐑", "Sheep 🐑"),
+        ("Get 🐐", "Goat 🐐"),
+        ("Hund 🐕", "Dog 🐕"),
+        ("Katt 🐈", "Cat 🐈"),
+        ("Uggla 🦉", "Owl 🦉"),
+        ("Delfin 🐬", "Dolphin 🐬"),
+        ("Haj 🦈", "Shark 🦈"),
+        ("Kanin 🐇", "Rabbit 🐇"),
+        ("Spindel 🕷️", "Spider 🕷️"),
+        ("Björn 🐻", "Bear 🐻"),
+        ("Hamster 🐱", "Hamster 🐱"),
+        ("Svan 🦢", "Swan 🦢"),
+        ("Anka 🦆", "Duck 🦆"),
+        ("Apa 🐒", "Monkey 🐒")
         ]
     
     private let mediumAnimals: [(swedish: String, english: String)] = [
-        ("Känguru 🦘", "Kangaroo"),
-        ("Isbjörn 🐻‍❄️", "Polar Bear"),
-        ("Papegoja 🦜", "Parrot"),
-        ("Bläckfisk 🐙", "Octopus"),
-        ("Pingvin 🐧", "Penguin"),
-        ("Krokodil 🐊", "Crocodile"),
-        ("Sköldpadda 🐢", "Turtle"),
-        ("Orm", "Snake"),
-        ("Groda 🐸", "Frog"),
+        ("Känguru 🦘", "Kangaroo 🦘"),
+        ("Isbjörn 🐻‍❄️", "Polar Bear 🐻‍❄️"),
+        ("Papegoja 🦜", "Parrot 🦜"),
+        ("Bläckfisk 🐙", "Octopus 🐙"),
+        ("Pingvin 🐧", "Penguin 🐧"),
+        ("Krokodil 🐊", "Crocodile 🐊"),
+        ("Sköldpadda 🐢", "Turtle 🐢"),
+        ("Orm 🐍", "Snake 🐍"),
+        ("Groda 🐸", "Frog 🐸"),
         ("Salamander", "Salamander"),
-        ("Myra 🐜", "Ant"),
-        ("Fjäril 🦋", "Butterfly"),
-        ("Örn 🦅", "Eagle"),
+        ("Myra 🐜", "Ant 🐜"),
+        ("Fjäril 🦋", "Butterfly 🦋"),
+        ("Örn 🦅", "Eagle 🦅"),
         ("Hök", "Hawk"),
-        ("Kråka", "Crow"),
-        ("Älg🦌", "Moose"),
-        ("Ren", "Reindeer"),
+        ("Kråka 🐦‍⬛", "Crow 🐦‍⬛"),
+        ("Älg 🦌", "Moose 🦌"),
+        ("Ren 🦌", "Reindeer 🦌"),
         ("Rådjur", "Deer"),
-        ("Utter", "Otter")
+        ("Utter 🦦", "Otter 🦦")
     ]
         
     private let hardAnimals: [(swedish: String, english: String)] = [
         ("Iller", "Ferret"),
-        ("Vildsvin🐗", "Boar"),
+        ("Vildsvin 🐗", "Boar 🐗"),
         ("Mård", "Marten"),
         ("Tjäder", "Capercaillie"),
-        ("Marsvin", "Guinea pig"),
+        ("Marsvin 🐹", "Guinea pig 🐹"),
         ("Järv", "Wolverine"),
         ("Skata", "Magpie"),
-        ("Korp", "Raven"),
+        ("Korp 🐦‍⬛", "Raven 🐦‍⬛"),
         ("Fiskmås", "Seagull"),
         ("Fasan", "Pheasant"),
-        ("Huggorm 🐍", "Viper"),
-        ("Tvättbjörn 🦝", "Raccoon"),
-        ("Myrslok 🐜", "Anteater"),
-        ("Flodhäst 🦛", "Hippopotamus"),
+        ("Huggorm 🐍", "Viper 🐍"),
+        ("Tvättbjörn 🦝", "Raccoon 🦝"),
+        ("Myrslok", "Anteater"),
+        ("Flodhäst 🦛", "Hippopotamus 🦛"),
         ("Bältdjur", "Armadillo"),
-        ("Nyckelpiga 🐞", "Ladybug"),
-        ("Ekorre 🐿️", "Squirrel"),
-        ("Igelkott 🦔", "Hedgehog")
+        ("Nyckelpiga 🐞", "Ladybug 🐞"),
+        ("Ekorre 🐿️", "Squirrel 🐿️"),
+        ("Igelkott 🦔", "Hedgehog 🦔")
     ]
     
       private var usedIndices: Set<Int> = []
@@ -121,14 +122,31 @@ class AnimalManager {
           usedIndices.insert(randomIndex)
           return currentLevelAnimals[randomIndex]
       }
+    
+     func removeEmojis(from text: String) -> String {
+        return text.unicodeScalars.filter { !$0.properties.isEmojiPresentation }
+            .map {String($0)}
+            .joined()
+            .trimmingCharacters(in: .whitespaces)
+    }
       
       func checkCorrectAnswer(userInput: String, forSwedishWord: String) -> Bool {
           let allAnimals = easyAnimals + mediumAnimals + hardAnimals
           guard let animal = allAnimals.first(where: { $0.swedish == forSwedishWord }) else {
               return false
           }
-          return userInput.lowercased() == animal.english.lowercased()
+          let cleanEnglishWord = removeEmojis(from: animal.english)
+          return userInput.lowercased() == cleanEnglishWord.lowercased()
       }
+    
+    func checkCorrectAnswer(userInput: String, forEnglishWord: String) -> Bool {
+        let allAnimals = easyAnimals + mediumAnimals + hardAnimals
+        guard let animal = allAnimals.first(where: { $0.english == forEnglishWord }) else {
+            return false
+        }
+        let cleanSwedishWord = removeEmojis(from: animal.swedish)
+        return userInput.lowercased() == cleanSwedishWord.lowercased()
+    }
       
       func increaseScore(by points: Int) {
           score += points
