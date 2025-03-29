@@ -10,6 +10,7 @@ import UIKit
 class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var highscores: [HighScoreEntry] = []
     var getCurrentScore: Int = 0
+    var latestPlayer: Int? = nil
     
     @IBOutlet weak var RankLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
@@ -23,18 +24,25 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         
         // Sortera (högsta först)
         highscores.sort { $0.score > $1.score }
+      
+      // Hitta senaste den aktuella spelaren
+      for index in stride(from: highscores.count - 1, through: 0, by: -1) {
+          if highscores[index].score == getCurrentScore {
+            latestPlayer = index
+              break
+          }
+      }
         
-        // Tilldela emojis
-        for (index, var entry) in highscores.enumerated() {
-            if index == 0 {
-                entry.emoji = "🏆"  // Högsta poäng
-            } else if entry.score == getCurrentScore {
-                entry.emoji = "🎯"  // Aktuell spelare
-            } else {
-                entry.emoji = nil  // Återställ
-            }
-            highscores[index] = entry  // Uppdatera listan med ändrat objekt
-        }
+      // Tilldela emojis
+      for index in highscores.indices {
+          if index == 0 {
+              highscores[index].emoji = "🏆"  // Högsta poäng
+          } else if let currentIndex = latestPlayer, index == currentIndex {
+              highscores[index].emoji = "🎯"  // Endast senaste aktuella spelaren
+          } else {
+              highscores[index].emoji = nil  // Återställ
+          }
+      }
         
         // Sätt delegate och dataSource
         tableView.dataSource = self
