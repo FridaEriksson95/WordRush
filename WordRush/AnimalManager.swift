@@ -52,7 +52,6 @@ class AnimalManager {
         ("Fjäril 🦋", "Butterfly 🦋"),
         ("Örn 🦅", "Eagle 🦅"),
         ("Hök", "Hawk"),
-        ("Kråka 🐦‍⬛", "Crow 🐦‍⬛"),
         ("Älg 🦌", "Moose 🦌"),
         ("Ren 🦌", "Reindeer 🦌"),
         ("Rådjur", "Deer"),
